@@ -11,9 +11,8 @@ export default function LandingPage() {
   
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
   const [bookedSlots, setBookedSlots] = useState([]);
+  const [loading, setLoading] = useState(false);
   
   const carouselRef = useRef(null);
 
@@ -74,6 +73,7 @@ export default function LandingPage() {
     if(!selectedDate || !selectedTime) return alert("Selecciona fecha y hora");
 
     const dateStr = format(selectedDate, 'yyyy-MM-dd');
+    setLoading(true);
     try {
       await api.post('/appointments', { name, phone, appointment_date: dateStr, start_time: selectedTime, end_time: selectedTime, notes: '' });
       const message = `¡Hola YansyNails! ✨ Vengo a agendar una cita.\nMi nombre es: *${name}*\nFecha: *${dateStr}*\nHora: *${selectedTime}*`;
@@ -85,6 +85,8 @@ export default function LandingPage() {
       setName(''); setPhone(''); setSelectedDate(null); setSelectedTime(null);
     } catch(err) { 
       alert("Error al agendar. Por favor intenta de nuevo."); 
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -214,10 +216,10 @@ export default function LandingPage() {
                  <motion.button 
                    whileHover={{ scale: 1.02 }}
                    whileTap={{ scale: 0.98 }}
-                   type="submit" disabled={!selectedDate || !selectedTime} 
+                   type="submit" disabled={!selectedDate || !selectedTime || loading} 
                    className="w-full bg-[#D8A7B1] text-white font-medium text-lg py-4 rounded-xl disabled:opacity-50 disabled:bg-gray-300 transition shadow-md mt-4 hover:bg-[#C8949E]"
                  >
-                    Confirmar por WhatsApp
+                    {loading ? 'Enviando...' : 'Confirmar por WhatsApp'}
                  </motion.button>
                </form>
             </div>

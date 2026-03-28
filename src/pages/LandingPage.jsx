@@ -76,12 +76,16 @@ export default function LandingPage() {
     const dateStr = format(selectedDate, 'yyyy-MM-dd');
     try {
       await api.post('/appointments', { name, phone, appointment_date: dateStr, start_time: selectedTime, end_time: selectedTime, notes: '' });
-      const message = `Hola YansyNails! ✨ Vengo a agendar una cita.\nMi nombre es: *${name}*\nFecha: *${dateStr}*\nHora: *${selectedTime}*`;
-      const url = `https://wa.me/526971140318?text=${encodeURIComponent(message)}`;
-      alert("Cita pre-registrada. Serás redirigido a WhatsApp para confirmar.");
-      window.open(url, '_blank');
+      const message = `¡Hola YansyNails! ✨ Vengo a agendar una cita.\nMi nombre es: *${name}*\nFecha: *${dateStr}*\nHora: *${selectedTime}*`;
+      const url = `https://api.whatsapp.com/send?phone=526971140318&text=${encodeURIComponent(message)}`;
+      
+      // Direct redirect for better mobile compatibility
+      window.location.href = url;
+      
       setName(''); setPhone(''); setSelectedDate(null); setSelectedTime(null);
-    } catch(err) { alert("Error al agendar."); }
+    } catch(err) { 
+      alert("Error al agendar. Por favor intenta de nuevo."); 
+    }
   };
 
   return (

@@ -102,9 +102,9 @@ export default function LandingPage() {
           href="#agendar" 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#D8A7B1] text-white px-8 py-3 rounded-full font-medium shadow-md hover:bg-[#C8949E] transition-colors border border-transparent"
+          className="bg-[#D8A7B1] text-white px-5 py-2 md:px-8 md:py-3 rounded-full text-sm md:text-base font-medium shadow-md hover:bg-[#C8949E] transition-colors border border-transparent"
         >
-          Reserva Mágica
+          Reserva
         </motion.a>
       </nav>
 

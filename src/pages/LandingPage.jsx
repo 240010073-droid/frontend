@@ -77,7 +77,7 @@ export default function LandingPage() {
     try {
       await api.post('/appointments', { name, phone, appointment_date: dateStr, start_time: selectedTime, end_time: selectedTime, notes: '' });
       const message = `¡Hola YansyNails! ✨ Vengo a agendar una cita.\nMi nombre es: *${name}*\nFecha: *${dateStr}*\nHora: *${selectedTime}*`;
-      const url = `https://api.whatsapp.com/send?phone=6971140318&text=${encodeURIComponent(message)}`;
+      const url = `https://api.whatsapp.com/send?phone=+526971140318&text=${encodeURIComponent(message)}`;
       
       // Direct redirect for better mobile compatibility
       window.location.href = url;

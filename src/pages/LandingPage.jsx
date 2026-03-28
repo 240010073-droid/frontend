@@ -77,7 +77,7 @@ export default function LandingPage() {
     try {
       await api.post('/appointments', { name, phone, appointment_date: dateStr, start_time: selectedTime, end_time: selectedTime, notes: '' });
       const message = `¡Hola YansyNails! ✨ Vengo a agendar una cita.\nMi nombre es: *${name}*\nFecha: *${dateStr}*\nHora: *${selectedTime}*`;
-      const url = `https://api.whatsapp.com/send?phone=526971140318&text=${encodeURIComponent(message)}`;
+      const url = `https://api.whatsapp.com/send?phone=6971140318&text=${encodeURIComponent(message)}`;
       
       // Direct redirect for better mobile compatibility
       window.location.href = url;
@@ -192,7 +192,7 @@ export default function LandingPage() {
                <form onSubmit={handleBooking} className="space-y-6 relative z-10">
                  <div>
                     <label className="block text-xs font-semibold text-[#2C2C2C] mb-2 uppercase tracking-widest">Nombre Completo</label>
-                    <input type="text" required value={name} onChange={e=>setName(e.target.value)} className="w-full bg-white border border-[#ECA0A6]/40 rounded-xl p-4 text-[#2C2C2C] focus:outline-none focus:border-[#D8A7B1] focus:ring-1 focus:ring-[#D8A7B1] transition font-light placeholder-gray-400" placeholder="Escribe tu nombre hermoso" />
+                    <input type="text" required value={name} onChange={e=>setName(e.target.value)} className="w-full bg-white border border-[#ECA0A6]/40 rounded-xl p-4 text-[#2C2C2C] focus:outline-none focus:border-[#D8A7B1] focus:ring-1 focus:ring-[#D8A7B1] transition font-light placeholder-gray-400" placeholder="Escribe tu nombre" />
                  </div>
                  <div>
                     <label className="block text-xs font-semibold text-[#2C2C2C] mb-2 uppercase tracking-widest">Número (WhatsApp)</label>

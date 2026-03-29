@@ -11,6 +11,8 @@ export default function LandingPage() {
   
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   const [bookedSlots, setBookedSlots] = useState([]);
   const [loading, setLoading] = useState(false);
   
